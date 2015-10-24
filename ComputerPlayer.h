@@ -1,20 +1,17 @@
-class ComputerPlayer
+// Computer player header
+
+#include "Player.h"
+
+#ifndef COMPUTERPLAYER_H
+#define COMPUTERPLAYER_H
+
+class ComputerPlayer: public Player
 {
-	private:
-		int size;
-		char** array;
-		
 	public:
-	int xCoordinate;
-	int yCoordinate;
-	bool isAlive;
-	char playerColour;
-	
-	
-	ComputerPlayer();
-	
-	void calculate_computer_move();
-	void print(bool, bool);
-	void receiveBoardSize(int);
-	void receiveBoardArray(char**);
+		ComputerPlayer(char, string, int, int);
+		void calculateComputerMove(vector < vector <char> > );
+		
+		
 };
+
+#endif

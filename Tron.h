@@ -1,20 +1,26 @@
+// Tron header file
+
 #include <string>
 #include <iostream>
 #include "Board.h"
-#include "Player.h"
-#include "ComputerPlayer.h"
+//#include "Player.h"
+//#include "ComputerPlayer.h"
 using namespace std;
 
 class Tron
 {
-	Board b;							 
-	Player R;
+	Board b;
+	int opponent;						 
+	
 	
 	
 	public: 
-		void Play();
-		void PlayAgainstComputer();
-		void PlayAgainstPlayer();
-		void PlayAgainstSmartComputer();
+		void play();
+		void playAgainstComputer();
+		void playAgainstPlayer();
+//		void playAgainstSmartComputer();
+		Tron();
+		
+
 				
 };

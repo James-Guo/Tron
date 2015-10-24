@@ -1,3 +1,5 @@
+// Computer Player Imp file
+
 #include <string>
 #include <iostream>
 #include <stdlib.h> 
@@ -6,28 +8,23 @@
 #include "ComputerPlayer.h"
 using namespace std;
 
-ComputerPlayer::ComputerPlayer()
+
+
+
+ComputerPlayer::ComputerPlayer(char colourLetter, string colour, int x, int y)
+: Player(colourLetter, colour, x, y )
 {
+	playerLetter = colourLetter;
+	playerColour = colour;
+	xCoordinate = x;
+	yCoordinate = y;
+	
 	isAlive = true;
-	playerColour = 'B';
-	
-	
-}
-
-void ComputerPlayer::receiveBoardSize(int boardSize)
-{
-	size = boardSize;
-	
-}
-
-void ComputerPlayer::receiveBoardArray(char** boardArray)
-{
-	array = boardArray;
 	
 }
 
 
-void ComputerPlayer::calculate_computer_move()
+void ComputerPlayer:: calculateComputerMove(vector < vector <char> > array)
 {
 	bool movement[4];
 	bool canGoUp = true;
@@ -42,27 +39,18 @@ void ComputerPlayer::calculate_computer_move()
 		movement[i] = false;
 	}
 
-
-	if (xCoordinate - 1 < 0 || xCoordinate - 1 > size - 1 )
-	{
+	if (xCoordinate - 1 < 0 || xCoordinate - 1 > array.size() - 1 )
 		canGoUp = false;
-	}
-	
-	if (xCoordinate + 1 < 0 || xCoordinate + 1 > size - 1 )
-	{
+		
+	if (xCoordinate + 1 < 0 || xCoordinate + 1 > array.size() - 1 )
 		canGoDown = false;
-	}
 	
-	if (yCoordinate - 1 < 0 || yCoordinate - 1 > size - 1 )
-	{
+	if (yCoordinate - 1 < 0 || yCoordinate - 1 > array.size() - 1 )
 		canGoLeft = false;
-	}
-	
-	if (yCoordinate + 1 < 0 || yCoordinate + 1 > size - 1 )
-	{
+		
+	if (yCoordinate + 1 < 0 || yCoordinate + 1 > array.size() - 1 )
 		canGoRight = false;
-	}
-
+	
 	
 	if (canGoUp)
 	{	
@@ -76,13 +64,13 @@ void ComputerPlayer::calculate_computer_move()
 	
 	if (canGoDown )
 	{
-		if (  array[xCoordinate + 1][yCoordinate] == ' ' )
+		if ( array[xCoordinate + 1][yCoordinate] == ' ' )
 		{
 			movement[1] = true;
 		
 		}
 	}
-
+	
 	if (canGoLeft)
 	{	
 		if ( array[xCoordinate ][yCoordinate - 1] == ' ' )
@@ -101,12 +89,10 @@ void ComputerPlayer::calculate_computer_move()
 		}
 	}
 	
-		
-	if (movement[0] == false && movement[1] == false && movement[2] == false && movement[3] == false)
-	{
-		isAlive = false;
-	}
 	
+	// If you cant move you die	
+	if (movement[0] == false && movement[1] == false && movement[2] == false && movement[3] == false)
+		isAlive = false;
 	
 	
 	else 
@@ -116,7 +102,6 @@ void ComputerPlayer::calculate_computer_move()
 		do 
 		{
 			
-			 
 			int randomNumberGenerated = rand() % 4;
 			
 			// Go up
@@ -157,7 +142,6 @@ void ComputerPlayer::calculate_computer_move()
 				
 	}
 	
-
-
+	
 	
 }

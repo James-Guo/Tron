@@ -1,25 +1,29 @@
+// Board header file
+
+#include <vector>
+
 using namespace std;
 
-typedef char* CharArrayPtr;
 
 class Board 
 {
 	// Variables
+	private:
+		vector <vector <char> > boardArray;
+		int boardSize;
+	
 	public:
-	CharArrayPtr *boardArray;
-	int boardSize;
-	
-	
-	Board();
-	~Board();
-	
+		Board();
+			
+		// Functions
+		void print();
+		void printVictory(bool, bool);
+		void playersMoveChangingBoard( int , int, char);
 		
-	// Functions
-	void print();
-	void fill_board( );
-	void players_move_changing_board( int , int, char, bool  );
-	int getBoardSize();
-	char** getBoardArray();
-	int determineOpponent();
+		vector <vector<char> > getBoardArray(){return boardArray;}
+		
+		int getBoardSize(){return boardSize;}
+		
+		int determineOpponent();
 	
 };
